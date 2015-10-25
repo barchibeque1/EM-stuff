@@ -5,7 +5,7 @@ scat=function
  mytest="CSEM",
  gain=Hake_gain,
  csize=class_size,
- mytitle="Gain by class size for IE on CSEM"
+ mytitle="Gain by class size for IE on CSEM (studio)"
 )
 {
   
@@ -17,13 +17,13 @@ scat=function
 }
 #by studio
 scat()
-scat(mytest="BEMA", mytitle ="Gain by class size for IE on BEMA")
-scat(mymethod="TRAD",mytest="BEMA", mytitle="Gain by class size for TRAD on BEMA")
-scat(mymethod="TRAD", mytitle="Gain by class size for TRAD on CSEM")
+scat(mytest="BEMA", mytitle ="Gain by class size for IE on BEMA (studio)")
+scat(mymethod="TRAD",mytest="BEMA", mytitle="Gain by class size for TRAD on BEMA (studio)")
+scat(mymethod="TRAD", mytitle="Gain by class size for TRAD on CSEM (studio)")
 #by lecture
 scat(csize=lecture_size, mytitle="Gain by class size for IE on CSEM (lecture)")
 scat(csize=lecture_size,mytest="BEMA", mytitle ="Gain by class size for IE on BEMA (lecture)")
-scat(csize=lecture_size,mymethod="TRAD",mytest="BEMA", mytitle="Gain by class size for TRAD on BEMA((lecture)")
+scat(csize=lecture_size,mymethod="TRAD",mytest="BEMA", mytitle="Gain by class size for TRAD on BEMA (lecture)")
 scat(csize=lecture_size,mymethod="TRAD", mytitle="Gain by class size for TRAD on CSEM (lecture)")
 
 #this is a plot for all the data (studio)
