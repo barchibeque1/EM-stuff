@@ -1,35 +1,38 @@
 golden=function
-(method=teaching_method_category,
+(method=Teaching_method,
  mymethod="IE",
+ mymetod="TRAD",
  test=Test,
  mytest="CSEM",
  gain=Hake_gain,
- csize=number_who_took_test_matched,
- mytitle="Gain by Pre-score for IE on CSEM",
+ csize=studio_size,
+ mytitle="Gain by Pre-score on CSEM",
  covary=pre_score,
  mycovary="Pre-score",
- control=method==mymethod& Test==mytest
+ mycol="dodgerblue",
+ mycoltra="tomato",
+ xtestrelated=c(0 , 80),
+ ytestrelated=c(0 , .8)
+ 
+ 
 )
 {
   
   
-  plot.default(y=gain[control],x=covary[control],
-       main = mytitle, xlab=mycovary, ylab= "Normalized Gain")}
+  plot.default(y=gain[method==mymethod& Test==mytest&covary!=""],x=covary[method==mymethod& Test==mytest&covary!=""],
+       main = mytitle, xlab=mycovary, ylab= "Normalized Gain",xlim=xtestrelated, ylim=ytestrelated,col=alpha(mycol,.2),pch=16,ann=TRUE)
+  par(new=TRUE, ann=FALSE)
+  plot.default(y=gain[method==mymetod& Test==mytest&covary!=""],x=covary[method==mymetod& Test==mytest&covary!=""],
+               main = mytitle, xlab=mycovary, ylab= "Normalized Gain",xlim=xtestrelated, ylim=ytestrelated,col=alpha(mycoltra,.2),pch=16)
+
+  }
 
 #prescore stuff
 golden()
-golden(mytest="BEMA", mytitle ="Gain by Pre-score for IE on BEMA")
-golden(mymethod="TRAD",mytest="BEMA", mytitle="Gain by Pre-score for TRAD on BEMA")
-golden(mymethod="TRAD", mytitle="Gain by Pre-score for TRAD on CSEM")
+golden(mytest="BEMA", mytitle ="Gain by Pre-score on BEMA",mycol="darkblue",mycoltra= "indianred3")
+
 
 #postscore stuff
-golden(covary=post_score, mycovary="Post-score", mytitle="Gain by Post-score for IE on CSEM")
-golden(covary=post_score, mycovary="Post-score",mytest="BEMA", mytitle ="Gain by Pre-score for IE on BEMA")
-golden(covary=post_score, mycovary="Post-score",mymethod="TRAD",mytest="BEMA", mytitle="Gain by Pre-score for TRAD on BEMA")
-golden(covary=post_score, mycovary="Post-score",mymethod="TRAD", mytitle="Gain by Pre-score for TRAD on CSEM")
+golden(covary=post_score, mycovary="Post-score", mytitle="Gain by Post-score on CSEM")
+golden(covary=post_score, mycovary="Post-score",mytest="BEMA", mytitle ="Gain by Post-score on BEMA",mycol="darkblue",mycoltra= "indianred3")
 
-#test year stuff
-golden(covary=test_year, mycovary="Test Year",  mytitle="Gain by test year for IE on CSEM" )
-golden(covary=test_year, mycovary="Test Year",mytest="BEMA", mytitle ="Gain by test year for IE on BEMA")
-golden(covary=test_year, mycovary="Test Year", mymethod="TRAD",mytest="BEMA", mytitle="Gain by test year for TRAD on BEMA")
-golden(covary=test_year, mycovary="Test Year", mymethod="TRAD", mytitle="Gain by test year for TRAD on CSEM")
